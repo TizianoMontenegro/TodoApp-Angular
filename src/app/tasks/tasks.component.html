@@ -1,0 +1,22 @@
+<div class="wrapper">
+    <div class="column-left">
+        <form class="form">
+            <input type="text" name="title" placeholder="title">
+            <input type="text" name="description" placeholder="description">
+            <button type="submit">ADD</button>
+        </form>
+    </div>
+    <div class="column-right">
+        <h1>ToDo</h1>
+        <div class="tasks">
+            <div class="task" *ngFor="let task of tasks; let i = index">
+                <p>{{ i + 1 }} {{ task.title }} - {{ task.description }}</p>
+                <button>📝</button>
+                <button>🗑</button>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
