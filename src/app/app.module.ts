@@ -12,6 +12,7 @@ import { WrongRouteComponent } from './wrong-route/wrong-route.component';
 
 // Services
 import { TaskService } from './task.service';
+import { ValidateService } from './validate.service';
 
 const appRoutes: Routes = [
   {path: "", component: HomeComponent},
@@ -31,7 +32,7 @@ const appRoutes: Routes = [
     AppRoutingModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [TaskService],
+  providers: [TaskService, ValidateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

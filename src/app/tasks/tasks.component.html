@@ -1,10 +1,10 @@
 <div class="wrapper">
     <div class="column-left">
-        <form class="form">
-            <input type="text" name="title" placeholder="title">
-            <input type="text" name="description" placeholder="description">
-            <button type="submit">ADD</button>
-        </form>
+        <div class="form">
+            <input #inpTitle type="text" name="title" placeholder="title">
+            <textarea #inpDesc name="description" placeholder="description"></textarea>
+            <button (click)="addNewTask(inpTitle.value, inpDesc.value)">ADD</button>
+        </div>
     </div>
     <div class="column-right">
         <h1>ToDo</h1>

@@ -16,4 +16,8 @@ export class TasksComponent implements OnInit {
   ngOnInit():void {
     this.tasks = this.taskService.tasks;
   }
+
+  addNewTask(title: string, description: string) {
+    this.taskService.addTask(title, description)
+  }
 }
