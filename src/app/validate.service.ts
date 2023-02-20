@@ -17,7 +17,7 @@ export class ValidateService {
             else reject(`el campo ${name} no es valido2`);
         })
     }
-    bigger(field: string, name: string, number: number = 20) {
+    bigger(field: string, name: string, number: number = 10) {
         return new Promise((resolve, reject) => {
             if(field.length <= number) resolve(`El campo ${name} es valido3`);
             else reject(`el campo ${name} no es valido3`);
