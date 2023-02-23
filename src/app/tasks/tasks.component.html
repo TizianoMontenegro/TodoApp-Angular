@@ -1,11 +1,11 @@
 <div class="wrapper">
     <div class="column-left">
         <div class="form">
-            <input #inpTitle type="text" name="title" placeholder="title">
-            <p *ngIf="titleError">{{ titleError }}</p>
-            <textarea #inpDesc name="description" placeholder="description"></textarea>
-            <p *ngIf="descriptionError">{{ descriptionError }}</p>
-            <button (click)="addNewTask(inpTitle.value, inpDesc.value)">ADD</button>
+            <input [(ngModel)]="titleField" #inpTitle type="text" name="title" placeholder="title">
+            <p id="title-error-p" *ngIf="titleError" [ngStyle]="{color: titleError == 'El campo es válido.' ? '#0a0' : '#f00'}">{{ titleError }}</p>
+            <textarea [(ngModel)]="descriptionField" #inpDesc name="description" placeholder="description"></textarea>
+            <p id="description-error-p" *ngIf="descriptionError" [ngStyle]="{color: descriptionError == 'El campo es válido.' ? '#0a0' : '#f00'}">{{ descriptionError }}</p>
+            <button (click)="addNewTask()">ADD</button>
         </div>
     </div>
     <div class="column-right">
@@ -13,13 +13,26 @@
         <div class="tasks">
             <div class="task" *ngFor="let task of tasks; let i = index">
                 <p>{{ i + 1 }} {{ task.title }} - {{ task.description }}</p>
-                <button (click)="editTask(i)">📝</button>
+                <button (click)="openEditTask(i)">📝</button>
                 <button (click)="deleteTask(i)">🗑</button>
+
+                <div class="edit-task-wrapper" id="edit-task-wrapper-{{i}}">
+                    <div class="box">
+                        <h1>Edit task</h1>
+                        <div class="form">
+                            <input #editTitle type="text" name="title" placeholder="title">
+                            <p *ngIf="editTitleError">{{ editTitleError }}</p>
+                            <textarea #editDescription type="text" name="description" placeholder="description"></textarea>
+                            <p *ngIf="editDescriptionError">{{ editDescriptionError }}</p>
+                            <button (click)="editTask(i, editTitle.value, editDescription.value)">edit</button>
+                        </div>
+                        <button class="close" (click)="close(i)">X</button>
+                    </div>
+                </div>
             </div>
             
         </div>
     </div>
 </div>
 
-
-<app-edit-task></app-edit-task>
+<!-- <app-edit-task></app-edit-task> -->

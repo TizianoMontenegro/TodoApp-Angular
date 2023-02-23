@@ -26,20 +26,20 @@ export class ValidateService {
             field.includes("                ") || 
             field.includes("                 ") || 
             field.includes("                  ") || 
-            field.includes("                   ")) reject(`El campo está vacio.`);
-            else resolve(`El campo es valido.`);
+            field.includes("                   ")) reject(`El campo está vacío.`);
+            else resolve(`El campo es válido.`);
         })
     }
     minor(field: string, name: string, number: number = 6) {
         return new Promise((resolve, reject) => {
-            if(field.length >= number) resolve(`El campo es valido.`);
-            else reject(`El campo permite un minimo de ${number} letras.`);
+            if(field.length >= number) resolve(`El campo es válido.`);
+            else reject(`El campo permite un mínimo de ${number} letras.`);
         })
     }
     bigger(field: string, name: string, number: number = 10) {
         return new Promise((resolve, reject) => {
-            if(field.length <= number) resolve(`El campo es valido.`);
-            else reject(`El campo permite un maximo de ${number} letras.`);
+            if(field.length <= number) resolve(`El campo es válido.`);
+            else reject(`El campo permite un máximo de ${number} letras.`);
         })
     }
 }

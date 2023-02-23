@@ -1,0 +1,36 @@
+*{
+    box-sizing: border-box;
+    /* font-family: Arial, Helvetica, sans-serif; */
+}
+
+.edit-task-wrapper{
+    background-color: #0009;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.edit-task-wrapper .box{
+    background-color: antiquewhite;
+    position: relative;
+}
+.edit-task-wrapper h1{}
+.edit-task-wrapper .form{
+    background-color: aquamarine;
+    position: relative;
+}
+.edit-task-wrapper .form input{}
+
+.edit-task-wrapper .close{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.show{
+    display: flex;
+}
