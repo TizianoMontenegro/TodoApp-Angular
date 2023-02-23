@@ -1,0 +1,28 @@
+*{
+    box-sizing: border-box;
+    /* font-family: Arial, Helvetica, sans-serif; */
+}
+
+.wrapper{
+    background-color: #0009;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper .box{
+    background-color: antiquewhite;
+}
+.wrapper h1{}
+.wrapper .form{
+    background-color: aquamarine;
+}
+.wrapper .form input{}
+
+.show{
+    display: flex;
+}

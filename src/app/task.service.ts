@@ -16,4 +16,12 @@ export class TaskService {
     let newTask = new Task(title, description);
     this.tasks.push(newTask);
   };
+
+  deleteTask(id: number) {
+    this.tasks.splice(id, 1);
+  }
+
+  editTask(id: number, task: Task) {
+    this.tasks.splice(id, 1, task)
+  }
 }

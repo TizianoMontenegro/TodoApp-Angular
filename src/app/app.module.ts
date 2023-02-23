@@ -13,6 +13,7 @@ import { WrongRouteComponent } from './wrong-route/wrong-route.component';
 // Services
 import { TaskService } from './task.service';
 import { ValidateService } from './validate.service';
+import { EditTaskComponent } from './edit-task/edit-task.component';
 
 const appRoutes: Routes = [
   {path: "", component: HomeComponent},
@@ -25,7 +26,8 @@ const appRoutes: Routes = [
     AppComponent,
     HomeComponent,
     TasksComponent,
-    WrongRouteComponent
+    WrongRouteComponent,
+    EditTaskComponent
   ],
   imports: [
     BrowserModule,

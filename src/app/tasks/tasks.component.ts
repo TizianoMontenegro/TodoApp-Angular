@@ -31,14 +31,14 @@ export class TasksComponent implements OnInit {
 
     await this.validateService.null(title, titleName)
       .then(res => {
-        this.titleError = res
+        this.titleError = res;
         return this.validateService.minor(title, titleName, 6);
       }).then(res => {
-        this.titleError = res
+        this.titleError = res;
         return this.validateService.bigger(title, titleName);
       }).then(res => {
         validTitle = 1;
-        this.titleError = res
+        this.titleError = res;
       })
       .catch(err => {
         this.titleError = err;
@@ -65,4 +65,17 @@ export class TasksComponent implements OnInit {
       this.taskService.addTask(title, description);
     };
   };
+
+  deleteTask(id: number) {
+    this.taskService.deleteTask(id)
+  }
+  editTask(id: number) {
+    const edit = document.querySelector("app-edit-task .wrapper")
+    edit?.classList.add("show")
+    console.log(edit, id)
+  }
+
+  editNewTask(title: string) {
+    console.log(title)
+  }
 }
