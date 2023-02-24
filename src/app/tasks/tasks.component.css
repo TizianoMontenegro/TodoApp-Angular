@@ -1,7 +1,66 @@
 *{
     box-sizing: border-box;
-    /* font-family: Arial, Helvetica, sans-serif; */
+    font-family: Arial, Helvetica, sans-serif;
 }
+
+.wrapper{
+    background-color: antiquewhite;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 2em;
+    gap: 1.5em;
+}
+.wrapper .column-left{
+    background-color: aquamarine;
+}
+.wrapper .column-left h1{
+    text-align: center;
+}
+.wrapper .column-left .form{
+    background-color:cornflowerblue;
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    gap: .5em;
+    padding: .5em;
+}
+.wrapper .column-left .form p{
+    margin: 0;
+}
+.wrapper .column-left .form input,
+.wrapper .column-left .form textarea,
+.wrapper .column-left .form button{
+    width: 100%;
+    min-height: 35px;
+    font-size: 1.1em;
+}
+.wrapper .column-left .form textarea{
+    height: 80px;
+    resize: none;
+}
+.wrapper .column-right{
+    background-color:burlywood
+}
+.wrapper .column-right .tasks{
+}
+.wrapper .column-right .tasks .task{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: .3em;
+}
+.wrapper .column-right .tasks .task i{
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+}
+.wrapper .column-right .tasks .task i:hover{
+    cursor: pointer;
+}
+
+
 
 .edit-task-wrapper{
     background-color: #0009;
@@ -24,13 +83,38 @@
     position: relative;
 }
 .edit-task-wrapper .form input{}
-
 .edit-task-wrapper .close{
     position: absolute;
     top: 0;
     right: 0;
 }
-
 .show{
     display: flex;
+}
+
+
+.edit-task-wrapper .box h1{
+    text-align: center;
+}
+.edit-task-wrapper .box .form{
+    background-color:cornflowerblue;
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    gap: .5em;
+    padding: .5em;
+}
+.edit-task-wrapper .box .form p{
+    margin: 0;
+}
+.edit-task-wrapper .box .form input,
+.edit-task-wrapper .box .form textarea,
+.edit-task-wrapper .box .form button{
+    width: 100%;
+    min-height: 35px;
+    font-size: 1.1em;
+}
+.edit-task-wrapper .box .form textarea{
+    height: 80px;
+    resize: none;
 }
