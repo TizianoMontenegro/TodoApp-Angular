@@ -8,11 +8,11 @@
 
             <input [(ngModel)]="titleField" #inpTitle type="text" name="title" placeholder="title">
 
-            <p id="title-error-p" *ngIf="titleError" [ngStyle]="{color: titleError == 'El campo es válido.' ? '#0a0' : '#f00'}">{{ titleError }}</p>
+            <p id="title-error-p" *ngIf="titleError" [ngStyle]="{color: titleError.includes('es válido') ? '#5f5' : '#f55'}">{{ titleError }}</p>
 
             <textarea [(ngModel)]="descriptionField" #inpDesc name="description" placeholder="description"></textarea>
 
-            <p id="description-error-p" *ngIf="descriptionError" [ngStyle]="{color: descriptionError == 'El campo es válido.' ? '#0a0' : '#f00'}">{{ descriptionError }}</p>
+            <p id="description-error-p" *ngIf="descriptionError" [ngStyle]="{color: descriptionError.includes('es válido') ? '#5f5' : '#f55'}">{{ descriptionError }}</p>
 
             <button (click)="addNewTask()">ADD</button>
 
@@ -40,15 +40,15 @@
 
                         <div class="form">
 
-                            <input #editTitle type="text" name="title" placeholder="title">
+                            <input [(ngModel)]="editTitleField" type="text" name="title" placeholder="title">
 
-                            <p *ngIf="editTitleError" [ngStyle]="{color: editTitleError == 'El campo es válido.' ? '#0a0' : '#f00'}">{{ editTitleError }}</p>
+                            <p *ngIf="editTitleError" [ngStyle]="{color: editTitleError.includes('es válido') ? '#5f5' : '#f55'}">{{ editTitleError }}</p>
 
-                            <textarea #editDescription type="text" name="description" placeholder="description"></textarea>
+                            <textarea [(ngModel)]="editDescriptionField" type="text" name="description" placeholder="description"></textarea>
 
-                            <p *ngIf="editDescriptionError" [ngStyle]="{color: editDescriptionError == 'El campo es válido.' ? '#0a0' : '#f00'}">{{ editDescriptionError }}</p>
+                            <p *ngIf="editDescriptionError" [ngStyle]="{color: editDescriptionError.includes('es válido') ? '#5f5' : '#f55'}">{{ editDescriptionError }}</p>
 
-                            <button (click)="editTask(i, editTitle.value, editDescription.value)">edit</button>
+                            <button (click)="editTask(i)">EDIT</button>
 
                         </div>
 

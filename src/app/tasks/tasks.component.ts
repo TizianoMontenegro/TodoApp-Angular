@@ -18,6 +18,8 @@ export class TasksComponent implements OnInit {
 
   titleField!: string;
   descriptionField!: string;
+  editTitleField!: string;
+  editDescriptionField!: string;
 
   constructor(
     private taskService: TaskService,
@@ -27,6 +29,8 @@ export class TasksComponent implements OnInit {
     this.tasks = this.taskService.tasks;
     this.titleField = "";
     this.descriptionField = "";
+    this.editTitleField = "";
+    this.editDescriptionField = "";
   }
 
   async addNewTask() {
@@ -45,7 +49,7 @@ export class TasksComponent implements OnInit {
         return this.validateService.minor(this.titleField, titleName, 6);
       }).then(res => {
         this.titleError = res;
-        return this.validateService.bigger(this.titleField, titleName);
+        return this.validateService.bigger(this.titleField, titleName,10);
       }).then(res => {
         validTitle = 1;
         this.titleError = res;
@@ -60,7 +64,7 @@ export class TasksComponent implements OnInit {
         return this.validateService.minor(this.descriptionField, descriptionName, 6);
       }).then(res => {
         this.descriptionError = res;
-        return this.validateService.bigger(this.descriptionField, descriptionName, 20);
+        return this.validateService.bigger(this.descriptionField, descriptionName, 30);
       }).then(res => {
         validDescription = 1;
         this.descriptionError = res;
@@ -88,7 +92,7 @@ export class TasksComponent implements OnInit {
   deleteTask(id: number) {
     this.taskService.deleteTask(id)
   }
-  async editTask(id: number, title: string, description: string) {
+  async editTask(id: number) {
   
     let titleName = "title";
     let descriptionName = "description";
@@ -96,13 +100,13 @@ export class TasksComponent implements OnInit {
     let validTitle = 0;
     let validDescription = 0;
 
-    await this.validateService.null(title, titleName)
+    await this.validateService.null(this.editTitleField, titleName)
       .then(res => {
         this.editTitleError = res;
-        return this.validateService.minor(title, titleName, 6);
+        return this.validateService.minor(this.editTitleField, titleName, 6);
       }).then(res => {
         this.editTitleError = res;
-        return this.validateService.bigger(title, titleName);
+        return this.validateService.bigger(this.editTitleField, titleName, 10);
       }).then(res => {
         validTitle = 1;
         this.editTitleError = res;
@@ -111,13 +115,13 @@ export class TasksComponent implements OnInit {
         this.editTitleError = err;
       });
       
-    await this.validateService.null(description, descriptionName)
+    await this.validateService.null(this.editDescriptionField, descriptionName)
       .then(res => {
         this.editDescriptionError = res;
-        return this.validateService.minor(description, descriptionName, 6);
+        return this.validateService.minor(this.editDescriptionField, descriptionName, 6);
       }).then(res => {
         this.editDescriptionError = res;
-        return this.validateService.bigger(description, descriptionName, 20);
+        return this.validateService.bigger(this.editDescriptionField, descriptionName, 30);
       }).then(res => {
         validDescription = 1;
         this.editDescriptionError = res;
@@ -129,10 +133,12 @@ export class TasksComponent implements OnInit {
     console.log(validTitle, validDescription);
 
     if(validTitle == 1 && validDescription == 1) {
-      let taskEdited = new Task(title, description);
+      let taskEdited = new Task(this.editTitleField, this.editDescriptionField);
       this.taskService.editTask(id, taskEdited);
       this.editTitleError = "";
       this.editDescriptionError = "";
+      this.editTitleField = "";
+      this.editDescriptionField = "";
     };
   }
   
@@ -143,5 +149,9 @@ export class TasksComponent implements OnInit {
   close(id: number) {
     const wrapper = document.getElementById("edit-task-wrapper-"+id);
     wrapper?.classList.remove("show");
+    this.editTitleError = "";
+    this.editDescriptionError = "";
+    this.editTitleField = "";
+    this.editDescriptionField = "";
   }
 }
