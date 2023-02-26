@@ -1,69 +1,73 @@
-<div class="wrapper">
+<div class="background">
 
-    <div class="column-left">
+    <div class="wrapper">
 
-        <h1>ToDo</h1>
+        <div class="column-left">
 
-        <div class="form">
+            <h1>ToDo</h1>
 
-            <input [(ngModel)]="titleField" #inpTitle type="text" name="title" placeholder="title">
+            <div class="form">
 
-            <p id="title-error-p" *ngIf="titleError" [ngStyle]="{color: titleError.includes('es válido') ? '#5f5' : '#f55'}">{{ titleError }}</p>
+                <input [(ngModel)]="titleField" #inpTitle type="text" name="title" placeholder="title">
 
-            <textarea [(ngModel)]="descriptionField" #inpDesc name="description" placeholder="description"></textarea>
+                <p id="title-error-p" *ngIf="titleError" [ngStyle]="{color: titleError.includes('es válido') ? '#5f5' : '#f55'}">{{ titleError }}</p>
 
-            <p id="description-error-p" *ngIf="descriptionError" [ngStyle]="{color: descriptionError.includes('es válido') ? '#5f5' : '#f55'}">{{ descriptionError }}</p>
+                <textarea [(ngModel)]="descriptionField" #inpDesc name="description" placeholder="description"></textarea>
 
-            <button (click)="addNewTask()">ADD</button>
+                <p id="description-error-p" *ngIf="descriptionError" [ngStyle]="{color: descriptionError.includes('es válido') ? '#5f5' : '#f55'}">{{ descriptionError }}</p>
+
+                <button (click)="addNewTask()">ADD</button>
+
+            </div>
 
         </div>
+        
+        <div class="column-right">
 
-    </div>
-    
-    <div class="column-right">
+            <div class="tasks">
 
-        <div class="tasks">
+                <div class="task" *ngFor="let task of tasks; let i = index">
 
-            <div class="task" *ngFor="let task of tasks; let i = index">
+                    <p>{{ i + 1 }} {{ task.title }} - {{ task.description }}</p>
 
-                <p>{{ i + 1 }} {{ task.title }} - {{ task.description }}</p>
+                    <!-- <button >📝</button> -->
+                    <i class='bx bx-edit-alt edit' (click)="openEditTask(i)"></i>
 
-                <!-- <button >📝</button> -->
-                <i class='bx bx-edit-alt edit' (click)="openEditTask(i)"></i>
+                    <!-- <button >🗑</button> -->
+                    <i class='bx bx-folder-minus remove' (click)="deleteTask(i)"></i>
+                    
+                    <div class="edit-task-wrapper" id="edit-task-wrapper-{{i}}">
+                        <div class="box">
+                            <h1>Edit task</h1>
 
-                <!-- <button >🗑</button> -->
-                <i class='bx bx-folder-minus remove' (click)="deleteTask(i)"></i>
-                
-                <div class="edit-task-wrapper" id="edit-task-wrapper-{{i}}">
-                    <div class="box">
-                        <h1>Edit task</h1>
+                            <div class="form">
 
-                        <div class="form">
+                                <input [(ngModel)]="editTitleField" type="text" name="title" placeholder="title">
 
-                            <input [(ngModel)]="editTitleField" type="text" name="title" placeholder="title">
+                                <p *ngIf="editTitleError" [ngStyle]="{color: editTitleError.includes('es válido') ? '#5f5' : '#f55'}">{{ editTitleError }}</p>
 
-                            <p *ngIf="editTitleError" [ngStyle]="{color: editTitleError.includes('es válido') ? '#5f5' : '#f55'}">{{ editTitleError }}</p>
+                                <textarea [(ngModel)]="editDescriptionField" type="text" name="description" placeholder="description"></textarea>
 
-                            <textarea [(ngModel)]="editDescriptionField" type="text" name="description" placeholder="description"></textarea>
+                                <p *ngIf="editDescriptionError" [ngStyle]="{color: editDescriptionError.includes('es válido') ? '#5f5' : '#f55'}">{{ editDescriptionError }}</p>
 
-                            <p *ngIf="editDescriptionError" [ngStyle]="{color: editDescriptionError.includes('es válido') ? '#5f5' : '#f55'}">{{ editDescriptionError }}</p>
+                                <button (click)="editTask(i)">EDIT</button>
 
-                            <button (click)="editTask(i)">EDIT</button>
+                            </div>
+
+                            <button class="close-btn" (click)="close(i)">X</button>
 
                         </div>
-
-                        <button class="close" (click)="close(i)">X</button>
 
                     </div>
 
                 </div>
-
+                
             </div>
-            
-        </div>
 
+        </div>
+        
     </div>
-    
+
 </div>
 
 <!-- <app-edit-task></app-edit-task> -->
