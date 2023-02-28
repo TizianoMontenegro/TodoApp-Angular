@@ -4,12 +4,7 @@ import { Task } from './models/task.model';
 @Injectable()
 
 export class TaskService {
-  tasks: Task[] = [
-    new Task("Entrenar", "tengo que Entrenar"),
-    new Task("Programar", "tengo que Programar"),
-    new Task("Comer", "tengo que Comer"),
-    new Task("Dormir", "tengo que Dormir")
-  ];
+  tasks: Task[] = [];
   constructor() { }
 
   addTask(title: string, description: string) {
